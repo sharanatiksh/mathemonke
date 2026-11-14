@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Alata';font-size: 22px;
+}
+
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<title>Macroeconomic Multipliers ~ Mathe Monke</title>
+</head>
+<body style="background-color:#212120;">
+
+<h1 style="color:#6495ed; font-size: 60px;">Spending Multiplier Formula Derivation</h1>
+
+<p style="color:white; text-align: center;">Let's make the assumption that money spent by one person is another person's income</p>
+<p style="font-size: 40px; color:white; text-align: center;">
+        $$ \text{Money Spent by Person A } = \text{ Income of Person B}  $$
+    </p>
+<p style="color:#6495ed; text-align: center;">Now let's assume that the marginal propensity to consume is the same for everyone throughout the entire economy, and that not everyone spends all their income.</p>
+<p style="color:white; text-align: center;">The Marginal Propensity to Consume (MPC) is the fraction of income an individual spends on consumer goods. It is always a value less than 1 in this model.</p>
+<p style="color:white">Since the GDP of a country relies on money spent on consumer goods, all the purchases are additive. For example
+    $$ \text{Let I designate income by one person. So, the change in consumption of person 1 becomes } \Delta C_{1} = (MPC)I $$
+    Since this itself is another person's income, this can also be multiplied with MPC again
+    $$ \Delta C_{2} = I{(MPC)}^{2}  $$
+    This itself is also another person's income, so it can be multiplied by MPC once again.
+    $$ \Delta C_{3} = I{(MPC)}^{3}  $$
+    This can be repeated for n people in an economy:
+    $$ \Delta C_{n} = I{(MPC)}^{n}  $$
+    Now all these little changes in consumption can be added to contribute to the total change in Consumption spending in the economy
+    $$ \Delta Y = \Delta C = \sum_{n=0}^{i} \Delta C_{n} = \sum_{n=0}^{i} I{(MPC)}^{n} $$
+    Now, let's assume that there are infinite rounds of spending or infinite transactions. So, i approaches infinity.
+    $$ \Delta Y = \sum_{n=0}^{\infty} I{(MPC)}^{n} = I\sum_{n=0}^{\infty} {(MPC)}^{n} $$
+    Since the initial income is constant, we can pull it out entirely outside the summation.
+    Now, we are left with a geometric series that we must find the result for.
+
+</p>
+<h2 style="color:#6495ed; font-size: 60px;">TIME TO SOLVE!!!!</h2>
+<p style="color:white">
+    We must use the nth term test to see if the series may diverge.
+    $$ \lim_{n \to \infty} I {(MPC)}^{n} = 0 \text{ since } MPC < 1 $$
+    So, the nth term test is inconclusive because the result is zero.
+    Now, let's use algebraic manipulation to find the geometric sum.
+    $$ I\sum_{n=0}^{\infty} {(MPC)}^{n} = I\left(1 + (MPC) + (MPC)^{2} + (MPC)^{3} + ... + (MPC)^{n}  \right) $$
+    Let's multiply both sides by the MPC
+    $$ I(MPC)\sum_{n=0}^{\infty} {(MPC)}^{n} = I\left((MPC) + (MPC)^{2} + (MPC)^{3} + (MPC)^{4} + ... + (MPC)^{n+1}  \right) $$
+    We can subtract both equations from each other
+    $$ I(1-MPC)\sum_{n=0}^{\infty} {(MPC)}^{n} = I (1-(MPC)^{n+1}) $$
+    $$ \sum_{n=0}^{\infty} {(MPC)}^{n} = \frac{1-(MPC)^{n+1}}{1-MPC} $$
+    Since we have the summation formula, we can take the limit as n goes to infinity
+    $$ \lim_{n \to \infty} \frac{1-(MPC)^{n+1}}{1-MPC} = \frac{1-0}{1-MPC} = \frac{1}{1-MPC} \text{ since } MPC < 1 $$
+    Therefore, the following sum becomes:
+    $$ \sum_{n=0}^{\infty} {(MPC)}^{n} = \frac{1}{1-MPC} $$
+    WE HAVE DERIVED THE FORMULA OF THE SPENDING MULTIPLIER!
+    Now let's plug it back in to derive the change in GDP
+    $$ \Delta Y = \sum_{n=0}^{\infty} I{(MPC)}^{n} = \frac{I}{1-MPC} $$
+   
+
+</p>
+        </html>
+

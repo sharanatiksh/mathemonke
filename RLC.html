@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Alata';font-size: 22px;
+}
+
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<title>RLC Circuit Derivations ~ Mathe Monke</title>
+</head>
+<body style="background-color:#212120;">
+
+<h1 style="color:#6495ed; font-size: 60px;">RLC Circuit Equation Derivations</h1>
+
+<p style="color:#6495ed; text-align: center;">Kirchoff's Loop Rule: </p>
+<p style="font-size: 40px; color:white; text-align: center;">
+        $$ \sum \Delta V = 0$$
+    </p>
+<h2 style="color:#6495ed; font-size: 40px;">RLC Electric Circuit (without a battery)</h2>
+<p style="color:white;">Potential Difference of Resistor, Capacitor, & Inductor $$\Delta V_{R} = IR \quad \text{ } \Delta V_{C} = \frac{Q}{C} \quad \text{ } \Delta V_{L} = L \frac{dI}{dt}$$</p>
+<p style="color:white">Using Kirchoff's Loop Rule, we get:</p>
+<p style="font-size: 20px; color:white; text-align: center;">
+        $$ \sum \Delta V =\Delta V_{R}+\Delta V_{C}+\Delta V_{L}= 0$$
+    </p>
+<p style="font-size: 20px; color:white; text-align: center;">
+        $$ \sum \Delta V =IR+\frac{Q}{C}+L \frac{dI}{dt}= 0$$
+</p>
+<p style="font-size: 20px; color:white; text-align: center;">Remember the definitions of current:
+        $$I = \frac{dQ}{dt} \quad \text{ } \frac{dI}{dt} = \frac{d^{2}Q}{dt^{2}} $$ </p>
+<p style="font-size: 20px; color:white; text-align: left;">After substituting those terms back, we get the following linear, homogenous second-order differential equation:
+        $$ \sum \Delta V =\frac{dQ}{dt}R+\frac{Q}{C}+L \frac{d^{2}Q}{dt^{2}}= 0$$</p>
+
+</body>
+<div style="font-size: 20px; color:white; text-align: left;">Here is the general solution to a second-order linear, homogenous differential equation:
+        $$Q(t)=e^{kt} \quad \text{where k is a constant (real, imaginary, or complex) we solve for.}$$</div>
+<p style="color:white"></p>
+<p style="font-size: 20px; color:white; text-align: left;"> Solving for the first and second derivative with respect to time gives:
+        $$ Q(t)=e^{kt} \quad \frac{dQ}{dt} = ke^{kt} \quad \frac{d^{2}Q}{dt^{2}} = k^{2}e^{kt} $$</p>
+<div style="font-size: 20px; color:white; text-align: left;">
+        $$  ke^{kt}R+\frac{e^{kt}}{C}+L k^{2}e^{kt}= 0 $$</div>
+<div style="font-size: 20px; color:white; text-align: left;">
+        $$e^{kt}(kR+\frac{1}{C}+L k^{2})= 0 $$</div>
+<div style="font-size: 20px; color:white; text-align: left;">
+        $$kR+\frac{1}{C}+L k^{2} = 0 $$</div>
+<div style="font-size: 20px; color:white; text-align: left;">
+       
+<div style="font-size: 20px; color:white; text-align: left;"> To solve for k, we use the quadratic formula:
+        $$ak^{2} + bk + c = 0 \quad k=\frac{-b \pm \sqrt{b^{2}-4ac}}{2a}$$
+        $$a=L \quad b=R \quad c=\frac{1}{C}$$</div>
+<h2 style="color:#6495ed; font-size: 40px;">Case 1: Critically Damped RLC Circuit</h2>
+
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$ \text{Case 1 :} \quad {R}^{2}-\frac{4L}{C}=0$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$k=\frac{-b}{2a}=\frac{-RC}{2LC}=\frac{-R}{2L}$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">Therefore, Q(t) becomes
+        $$ Q_{1}(t) = c_{0}e^{kt} \text{ where } k=\frac{-R}{2L} \text{ and } c_{0} \text{ is a constant determined by the initial condition of the differential equation.} $$</p>
+<p style="font-size: 20px; color:white; text-align: left;">However, this is only one solution to the differential equation, & we use this to obtain another solution.
+        $$Q_{2}(t) = f(t)Q_{1}(t) = f(t)e^{kt} \quad \text{For the purposes of simplicity, } c_{0} = 1$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">Setting the constant equal to 1 doesn't change anything, as Q(t) is still a solution.
+        $$ Q_{2}(t) =  f(t)e^{kt}  $$
+    $$ Q_{2}'(t) =  f'(t)e^{kt} + kf(t)e^{kt}  $$
+$$ Q_{2}''(t) =  f''(t)e^{kt} +kf'(t)e^{kt} + k(f'(t)e^{kt} + kf(t)e^{kt})  $$</p>
+<p style="font-size: 20px; color:white; text-align: left;"> We plug the following back into our original differential equation:
+        $$\frac{dQ}{dt}R+\frac{Q}{C}+L \frac{d^{2}Q}{dt^{2}}= 0$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$(f'(t)e^{kt} + kf(t)e^{kt})R+\frac{f(t)e^{kt}}{C}+L(f''(t)e^{kt} +kf'(t)e^{kt} + k(f'(t)e^{kt} + kf(t)e^{kt})) = 0 $$
+        $$Rf'(t)e^{kt} + kRf(t)e^{kt}+\frac{f(t)e^{kt}}{C}+Lf''(t)e^{kt} + +kLf'(t)e^{kt} + Lkf'(t)e^{kt} + Lk^{2}f(t)e^{kt} = 0 $$ </p>
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$ \text{Remember: } k=\frac{-R}{2L} $$
+     $$Rf'(t)e^{kt} - \frac{R^{2}}{2L}f(t)e^{kt}+\frac{f(t)e^{kt}}{C}+Lf''(t)e^{kt} - \frac{R}{2}f'(t)e^{kt} - \frac{R}{2}f'(t)e^{kt} + \frac{R^{2}}{4L}f(t)e^{kt} = 0 $$
+$$e^{kt}(Rf'(t) - \frac{R^{2}}{2L}f(t)+\frac{f(t)}{C}+Lf''(t) - \frac{R}{2}f'(t) - \frac{R}{2}f'(t) + \frac{R^{2}}{4L}f(t)) = 0 $$
+$$e^{kt}\left(f'(t)(R-R) +f(t)(\frac{1}{C}-\frac{R^{2}}{2L}+ \frac{R^{2}}{4L})+ Lf''(t) \right) = 0 $$
+$$\frac{1}{C}-\frac{R^{2}}{2L}+ \frac{R^{2}}{4L} = \frac{4L}{4LC}-\frac{2R^{2}C}{4LC}+ \frac{R^{2}C}{4CL} = \frac{4L-2R^{2}C+R^{2}C}{4LC} = \frac{4L- R^{2}C}{4LC} $$
+$$ \text{Remember: } {R}^{2}-\frac{4L}{C}=0 $$ Multiplying both sides by C gives:
+$$ {R}^{2}C-4L=0 $$ Our expression looks like this (with manipulation):
+$$\frac{4L- R^{2}C}{4LC} = -\frac{ R^{2}C - 4L}{4LC} = -\frac{0}{4LC} = 0 $$ Therefore:
+$$ \frac{1}{C}-\frac{R^{2}}{2L}+ \frac{R^{2}}{4L} = 0$$ Then our differential equation becomes:
+$$e^{kt}\left( Lf''(t) \right) = 0 \quad e^{kt} \neq 0 \quad Lf''(t) = 0 \quad L \neq 0 \quad f''(t) = 0$$
+$$f'(t) = p_{1} \quad f(t) = p_{1}t + c_{1} \quad \text{, where } p_{1} \text{ and } c_{1} \text{ are constants.} $$
+$$ Q_{2}(t) =  (p_{1}t + c_{1})e^{kt}  $$ Then our solution becomes:
+$$ Q(t) = c_{0}Q_{1}(t) + c_{2} Q_{2}(t) $$
+$$ Q(t) = c_{0}e^{kt} + c_{2}(p_{1}t + c_{1})e^{kt} = c_{0}e^{kt} + c_{2}p_{1}te^{kt} + c_{2}c_{1}e^{kt} = \left(c_{0} + c_{2}c_{1}\right)e^{kt}+ c_{2}p_{1}te^{kt} $$
+Let's define the following:
+$$ A_{1} = c_{0} + c_{2}c_{1} \quad A_{2} = c_{2}p_{1} $$
+Then our final solution for charge in the capacitor is:
+$$ Q(t) = A_{1}e^{kt}+ A_{2}te^{kt} \quad \text{ , where } k=\frac{-R}{2L} \text{ , and } A_{1} \text{ & } A_{2} \text{ are both constants determined by initial conditions.}  $$
+Let's solve for the constants assuming the initial conditions:
+$$ Q(0) = Q_{0} \quad I(0) = I_{0} $$
+Let's first find Current equation:
+$$I(t) = \frac{dQ}{dt} = A_{1}ke^{kt} + A_{2}e^{kt} +A_{2}kte^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+Now let's plug in t=0 into both equations.
+$$ Q(0) = Q_{0} = A_{1}e^{0} + A_{2}(0)e^{0} = A_{1} $$
+$$ A_{1} = Q_{0} $$
+$$I(0) = I_{0} = Q_{0}ke^{0} + A_{2}e^{0} +A_{2}k(0)e^{0} = Q_{0}k + A_{2}$$ 
+$$I_{0} = Q_{0}k + A_{2} \quad A_{2} = I_{0} - kQ_{0}$$ 
+Therefore, our charge and current equations become:
+$$ Q(t) = Q_{0}e^{kt}+ (I_{0} - kQ_{0})te^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+$$I(t) = Q_{0}ke^{kt} + (I_{0} - kQ_{0})e^{kt} +(I_{0} - kQ_{0})kte^{kt} = I_{0}e^{kt} +(I_{0} - kQ_{0})kte^{kt}  \quad \text{ , where } k=\frac{-R}{2L} $$
+$$I(t) = I_{0}e^{kt} +(I_{0} - kQ_{0})kte^{kt}  \quad \text{ , where } k=\frac{-R}{2L} $$
+Using the charge equation & current equations, we can determine the Potential Voltage across every component. </p>
+<p>
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{Q(t)}{C} = \frac{Q_{0}e^{kt}+ (I_{0} - kQ_{0})te^{kt}}{C} \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = IR = I_{0}Re^{kt} +(I_{0}R - kQ_{0}R)kte^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = I_{0}ke^{kt}  +(I_{0} - kQ_{0})ke^{kt}+(I_{0} - kQ_{0})k^{2}te^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = 2I_{0}Lke^{kt} - k^2Q_{0}Le^{kt}+(I_{0}L - kQ_{0}L)k^{2}te^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+
+</p>
+<h2 style="color:#6495ed; font-size: 40px;">Case 2: Overdamped RLC Circuit</h2>
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$ \text{Case 2 :} \quad {R}^{2}-\frac{4L}{C}>0$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">We get 2 values for k:
+        $$k_{1}=\frac{-b + \sqrt{b^{2}-4ac}}{2a}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+    $$k_{2}=\frac{-b - \sqrt{b^{2}-4ac}}{2a}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+ We get 2 solutions for charge:
+ $$Q_{1}(t) = e^{k_{1}t}    \quad \text{ , where } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+$$Q_{2}(t) = e^{k_{2}t}    \quad \text{ , where } k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+Then we get the general solution:
+$$Q(t) = A_{1}Q_{1}(t) + A_{2}Q_{2}(t) = A_{1}e^{k_{1}t} + A_{2}e^{k_{2}t} $$ Let's assume the initial conditions:
+$$ Q(0) = Q_{0} \quad I(0) = I_{0} $$ Let's solve for the current equation:
+$$I(t) = \frac{dQ}{dt} = A_{1}k_{1}e^{k_{1}t} + A_{2}k_{2}e^{k_{2}t} $$
+Let's solve for constants:
+$$ Q(0) = Q_{0} = A_{1}e^{k_{1}(0)} + A_{2}e^{k_{2}(0)} = A_{1} + A_{2} $$
+$$I(0) = I_{0} = A_{1}k_{1}e^{k_{1}(0)} + A_{2}k_{2}e^{k_{2}(0)} = A_{1}k_{1} + A_{2}k_{2} $$
+We have the following system of equations:
+$$ Q_{0} = A_{1} + A_{2} $$
+$$I_{0} = A_{1}k_{1} + A_{2}k_{2} $$ Let' solve it!
+$$ A_{1} = Q_{0} - A_{2}$$
+$$I_{0} = (Q_{0} - A_{2})k_{1} + A_{2}k_{2} = Q_{0}k_{1} - A_{2}k_{1} + A_{2}k_{2} = Q_{0}k_{1} + A_{2}(k_{2} - k_{1}) $$
+$$ A_{2}(k_{2} - k_{1}) = I_{0} - Q_{0}k_{1} $$
+$$ A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}} $$
+$$ A_{1} = Q_{0} - A_{2} = Q_{0} + \frac{Q_{0}k_{1}-I_{0}}{k_{2} - k_{1}} = \frac{Q_{0}(k_{2} - k_{1})}{k_{2} - k_{1}} + \frac{Q_{0}k_{1}-I_{0}}{k_{2} - k_{1}} = \frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}} $$
+$$I(t) = \frac{dQ}{dt} = A_{1}k_{1}e^{k_{1}t} + A_{2}k_{2}e^{k_{2}t} \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+Using the charge equation & current equations, we can determine the Potential Voltage across every component. </p>
+<p>
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{Q(t)}{C} = \frac{A_{1}e^{k_{1}t} + A_{2}e^{k_{2}t}}{C} \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = I(t)R = A_{1}k_{1}Re^{k_{1}t} + A_{2}k_{2}Re^{k_{2}t} \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = A_{1}{(k_{1})}^{2}e^{k_{1}t} +A_{2}{k_{2}}^{2}e^{k_{2}t} \quad \text{ , where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = A_{1}{(k_{1})}^{2}Le^{k_{1}t} +A_{2}{k_{2}}^{2}Le^{k_{2}t} \quad \text{ , where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+
+</p>
+
+<h2 style="color:#6495ed; font-size: 40px;">Case 3: Underdamped RLC Circuit</h2>
+<p style="font-size: 20px; color:white; text-align: left;">
+        $$ \text{Case 3 :} \quad {R}^{2}-\frac{4L}{C}<0$$</p>
+<p style="font-size: 20px; color:white; text-align: left;">We get 2 complex values for k:
+        $$k_{1}=\frac{-b + \sqrt{b^{2}-4ac}}{2a}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}=\frac{-R + i\sqrt{ \frac{4L}{C}-R^{2}}}{2L}$$
+    $$k_{2}=\frac{-b - \sqrt{b^{2}-4ac}}{2a}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}=\frac{-R - i\sqrt{ \frac{4L}{C}-R^{2}}}{2L}$$
+Let the following variables be defined:
+$$\alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L} $$
+We now have two solutions for charge:
+$$Q_{1}(t) = e^{k_{1}t} = e^{\alpha t}e^{(\omega_{0} i) t} \quad \text{ , where } k_{1} = \alpha + \omega_{0}i      $$
+$$Q_{2}(t) = e^{k_{2}t} = e^{\alpha t}e^{(-\omega_{0} i)t} \quad \text{ , where } k_{2} = \alpha - \omega_{0}i      $$
+
+
+We will now use Euler's formula:
+ $$e^{i\omega_{0}t}= cos(\omega_{0}t)+i*sin(\omega_{0}t)$$
+  $$e^{-i\omega_{0}t}= cos(-\omega_{0}t)+i*sin(-\omega_{0}t)=cos(\omega_{0}t)-i*sin(\omega_{0}t)$$
+
+Back to our two solutions:
+$$Q_{1}(t) = e^{\alpha t}(cos(\omega_{0}t)+i*sin(\omega_{0}t))       $$
+$$Q_{2}(t) =  e^{\alpha t}(cos(\omega_{0}t)-i*sin(\omega_{0}t))      $$
+
+Remember the general form for the solution:
+$$ y(t) = c_{1}y_{1}(t) + c_{2}y_{2}(t) $$
+$$ \text{Where } y_{1}(t) \text{ & } y_{2}(t) \text{ are solutions, and } c_{1}  \text{ & } c_{2} \text{ are constants}$$
+Let's add the solutions:
+$$Q_{1}(t) + Q_{2}(t) = e^{\alpha t}(cos(\omega_{0}t)+i*sin(\omega_{0}t)+cos(\omega_{0}t)-i*sin(\omega_{0}t))=2e^{\alpha t}cos(\omega_{0} t)       $$
+$$ e^{\alpha t}cos(\omega_{0} t) = \frac{Q_1(t)}{2} + \frac{Q_2(t)}{2}$$
+$$ \text{Since } \frac{Q_1(t)}{2} + \frac{Q_2(t)}{2} \text{ is in the general solution form with the constants being 2, } e^{\alpha t}cos(\omega_{0} t) \text{ is also a solution.} $$
+Let's subtract the solutions:
+$$Q_{1}(t) - Q_{2}(t) = e^{\alpha t}(cos(\omega_{0}t)+i*sin(\omega_{0}t)-cos(\omega_{0}t)+i*sin(\omega_{0}t))=2ie^{\alpha t}sin(\omega_{0} t)       $$
+$$ e^{\alpha t}sin(\omega_{0} t) = \frac{Q_1(t)}{2i} - \frac{Q_2(t)}{2i}$$
+$$ \text{Similar to the previous equation, } \frac{Q_1(t)}{2i} - \frac{Q_2(t)}{2i} \text{ is in the general solution form. So, } e^{\alpha t}sin(\omega_{0} t) \text{ is also a solution.} $$
+So our general solution becomes:
+$$ Q(t) = A_{1}e^{\alpha t}sin(\omega_{0} t) + A_{2}e^{\alpha t}cos(\omega_{0} t)\quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L} $$
+
+
+
+Let's assume the initial conditions:
+$$ Q(0) = Q_{0} \quad I(0) = I_{0} $$ 
+
+
+Let's solve for the current equation:
+$$I(t) = \frac{dQ}{dt} = \alpha e^{\alpha t} (A_{1}sin(\omega_{0} t) + A_{2}cos(\omega_{0} t)) + e^{\alpha t}(A_{1}\omega_{0} cos(\omega_{0} t) - A_{2} \omega_{0} sin(\omega_{0} t))$$
+Let's solve for constants:
+$$ Q(0) = Q_{0} = A_{1}e^{\alpha (0)}sin(\omega_{0} (0)) + A_{2}e^{\alpha (0)}cos(\omega_{0} (0)) = A_{2}$$
+$$A_{2} = Q_{0}$$
+$$I(0)=I_{0} = \alpha e^{\alpha (0)} (A_{1}sin(\omega_{0} (0)) + A_{2}cos(\omega_{0} (0))) + e^{\alpha (0)}(A_{1}\omega_{0} cos(\omega_{0} (0)) - A_{2} \omega_{0} sin(\omega_{0} (0))) = \alpha Q_{0} + \omega_{0} A_{1}$$
+$$A_{1} = \frac{I_{0}-\alpha Q_{0}}{\omega_{0}} $$
+The resulting charge and current equations with constants:
+$$ Q(t) = \frac{I_{0}-\alpha Q_{0}}{\omega_{0}}e^{\alpha t}sin(\omega_{0} t) + Q_{0}e^{\alpha t}cos(\omega_{0} t)\quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+$$ I(t) = \frac{\alpha I_{0} - \alpha^{2} Q_{0} - \omega_{0}^{2} Q_{0}}{\omega_{0}}e^{\alpha t} sin(\omega_{0} t) + I_{0} e^{\alpha t} cos(\omega_{0} t) \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L} = \alpha Q_{0} + \omega_{0} A_{1}$$
+
+
+
+
+Using the charge equation & current equations, we can determine the Potential Voltage across every component. </p>
+<p>
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{Q(t)}{C} = \frac{\frac{I_{0}-\alpha Q_{0}}{\omega_{0}}e^{\alpha t}sin(\omega_{0} t) + Q_{0}e^{\alpha t}cos(\omega_{0} t)}{C} = \frac{I_{0}-\alpha Q_{0}}{\omega_{0}C}e^{\alpha t}sin(\omega_{0} t) + \frac{Q_{0}}{C} e^{\alpha t}cos(\omega_{0} t) \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = \frac{\alpha I_{0} - \alpha^{2} Q_{0} - \omega_{0}^{2} Q_{0}}{\omega_{0}} R e^{\alpha t} sin(\omega_{0} t) + I_{0} R e^{\alpha t} cos(\omega_{0} t)\quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = \alpha e^{\alpha t} \left( (\frac{\alpha I_{0}-\alpha^{2} Q_{0}}{\omega_{0}} - Q_{0}\omega_{0})sin(\omega_{0} t) + I_{0}cos(\omega_{0} t) \right) + e^{\alpha t} \left((\alpha I_{0} - \alpha^{2}Q_{0} - \omega_{0}^{2} Q_{0} )cos(\omega_{0} t) - (I_{0}\omega_{0})sin(\omega_{0} t)\right)  \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = \alpha L e^{\alpha t} \left( (\frac{\alpha I_{0}-\alpha^{2} Q_{0} - \omega_{0}^2 Q_{0}}{\omega_{0}})sin(\omega_{0} t) + I_{0}cos(\omega_{0} t) \right) + Le^{\alpha t} \left((\alpha I_{0} - \alpha^{2}Q_{0} - \omega_{0}^{2} Q_{0} )cos(\omega_{0} t) - (I_{0}\omega_{0})sin(\omega_{0} t)\right)  \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+
+</p>
+<h2 style="color:#6495ed; font-size: 40px;">RLC Electric Circuit (with a battery)</h2>
+<p>
+        Now, we have a battery source!
+        Let's use Kirchoff's Voltage Law again.
+        $$ \sum \Delta V = \varepsilon - IR - \frac{Q}{C} - L \frac{dI}{dt} = 0$$
+        Now, let's algebraicly manipulate it:
+        $$ \varepsilon = \frac{dQ}{dt}R + \frac{Q}{C} + L \frac{dI}{dt} $$
+        This equation is in the form:
+        $$ a\frac{d^2y}{dt^2} + b \frac{dy}{dt} + cy = d \text{ ,where a, b, c, and d are constants.}$$
+        Since the differential equation is nonhomogenous, we get the following solution:
+        $$ y(t) = y_c(t) +y_p(t) $$
+        $$ \text{Where } y_c(t) \text{ is the solution (known as the complimentary solution) satisfying: } a\frac{d^2y}{dt^2} + b \frac{dy}{dt} + cy = 0 $$
+        $$ \text{and } y_p(t) \text{ is the particular solution: any solution that satisfies } a\frac{d^2y}{dt^2} + b \frac{dy}{dt} + cy = d $$
+        We already have the the complementary solution in all three cases.
+        To find the particular solution (since it equals a constant), let's assume:
+        $$ Q_p(t) = A \quad Q_p^{'}(t) = 0 \quad Q_p^{''}(t) = 0$$
+        Let's plug these results back into our equation:
+        $$ \varepsilon = \frac{dQ}{dt}R + \frac{Q}{C} + L \frac{dI}{dt} = 0R + \frac{A}{C} + L 0 $$
+        $$ \varepsilon = \frac{A}{C} \to A = \varepsilon C \to Q_{p} = \varepsilon C$$
+        Now, let's derive all the other equations:
+
+
+</p>    
+
+<h2 style="color:#6495ed; font-size: 40px;">Case 1: Critically Damped RLC Circuit</h2>
+$$ Q(t) = A_{1}e^{kt}+ A_{2}te^{kt} + \varepsilon C \quad \text{ , where } k=\frac{-R}{2L} $$
+Let's solve for the constants:
+$$ Q(0) = Q_{0} = A_{1} + \varepsilon C $$
+$$ A_{1} = Q_{0} - \varepsilon C $$
+$$ I(t) = \frac{dQ(t)}{dt} = A_{1} k e^{kt} + A_{2} (e^{kt} + kte^{kt}) $$
+$$ I(0) = A_{1}k + A_{2} \to A_{2} = I_{0}-Q_{0}k+\varepsilon k $$
+Since the derivative of a constant is zero, the current equation remains the same:
+$$I(t) = I_{0}e^{kt} +(I_{0} - kQ_{0})kte^{kt}  \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{Q(t)}{C} = \frac{Q_{0}e^{kt}+ (I_{0} - kQ_{0})te^{kt}}{C} + \varepsilon \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = IR = I_{0}Re^{kt} +(I_{0}R - kQ_{0}R)kte^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = I_{0}ke^{kt}  +(I_{0} - kQ_{0})ke^{kt}+(I_{0} - kQ_{0})k^{2}te^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = 2I_{0}Lke^{kt} - k^2Q_{0}Le^{kt}+(I_{0}L - kQ_{0}L)k^{2}te^{kt} \quad \text{ , where } k=\frac{-R}{2L} $$
+
+<h2 style="color:#6495ed; font-size: 40px;">Case 2: Overdamped RLC Circuit</h2>
+$$Q(t)  = A_{1}e^{k_{1}t} + A_{2}e^{k_{2}t} + \varepsilon C \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}  $$
+Since the derivative of a constant is zero, the current equation remains the same:
+$$I(t) = \frac{dQ}{dt} = A_{1}k_{1}e^{k_{1}t} + A_{2}k_{2}e^{k_{2}t} \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{A_{1}e^{k_{1}t} + A_{2}e^{k_{2}t}}{C} + \varepsilon \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = I(t)R = A_{1}k_{1}Re^{k_{1}t} + A_{2}k_{2}Re^{k_{2}t} \quad \text{, where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L}$$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = A_{1}{(k_{1})}^{2}e^{k_{1}t} +A_{2}{k_{2}}^{2}e^{k_{2}t} \quad \text{ , where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = A_{1}{(k_{1})}^{2}Le^{k_{1}t} +A_{2}{k_{2}}^{2}Le^{k_{2}t} \quad \text{ , where } A_{1}=\frac{Q_{0}k_{2}-I_{0}}{k_{2} - k_{1}}  \text{ , } A_{2} = \frac{I_{0} - Q_{0}k_{1}}{k_{2} - k_{1}}\text{ , } k_{1}=\frac{-R + \sqrt{R^{2} - \frac{4L}{C}}}{2L}\text{ , }k_{2}=\frac{-R - \sqrt{R^{2} - \frac{4L}{C}}}{2L} $$
+<h2 style="color:#6495ed; font-size: 40px;">Case 3: Underdamped RLC Circuit</h2>
+$$ Q(t) = \frac{I_{0}-\alpha Q_{0}}{\omega_{0}}e^{\alpha t}sin(\omega_{0} t) + Q_{0}e^{\alpha t}cos(\omega_{0} t) + \varepsilon C \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+$$ I(t) = \frac{\alpha I_{0} - \alpha^{2} Q_{0} - \omega_{0}^{2} Q_{0}}{\omega_{0}}e^{\alpha t} sin(\omega_{0} t) + I_{0} e^{\alpha t} cos(\omega_{0} t) \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L} = \alpha Q_{0} + \omega_{0} A_{1}$$
+Solving for the Potential Difference across the Capacitor:
+$$\Delta V_{C} = \frac{I_{0}-\alpha Q_{0}}{\omega_{0}C}e^{\alpha t}sin(\omega_{0} t) + \frac{Q_{0}}{C} e^{\alpha t}cos(\omega_{0} t) + \varepsilon \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for the Potential Difference across the Resistor:
+$$\Delta V_{R} = \frac{\alpha I_{0} - \alpha^{2} Q_{0} - \omega_{0}^{2} Q_{0}}{\omega_{0}} R e^{\alpha t} sin(\omega_{0} t) + I_{0} R e^{\alpha t} cos(\omega_{0} t)\quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for the Derivative of Current with respect to Time to solve for Potential Difference across Inductor:
+$$\frac{dI}{dt} = \alpha e^{\alpha t} \left( (\frac{\alpha I_{0}-\alpha^{2} Q_{0}}{\omega_{0}} - Q_{0}\omega_{0})sin(\omega_{0} t) + I_{0}cos(\omega_{0} t) \right) + e^{\alpha t} \left((\alpha I_{0} - \alpha^{2}Q_{0} - \omega_{0}^{2} Q_{0} )cos(\omega_{0} t) - (I_{0}\omega_{0})sin(\omega_{0} t)\right)  \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+Solving for Potential DIfference across Inductor:
+$$\Delta V_{L} = L\frac{dI}{dt} = \alpha L e^{\alpha t} \left( (\frac{\alpha I_{0}-\alpha^{2} Q_{0} - \omega_{0}^2 Q_{0}}{\omega_{0}})sin(\omega_{0} t) + I_{0}cos(\omega_{0} t) \right) + Le^{\alpha t} \left((\alpha I_{0} - \alpha^{2}Q_{0} - \omega_{0}^{2} Q_{0} )cos(\omega_{0} t) - (I_{0}\omega_{0})sin(\omega_{0} t)\right)  \quad \text{, where } \alpha = -\frac{R}{2L} \quad{ } \omega_{0} = \frac{\sqrt{\frac{4L}{C} - R^2}}{2L}$$
+
+</html>
+
+ 
